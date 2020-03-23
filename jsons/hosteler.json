@@ -1,0 +1,21 @@
+{
+    "id": 1,
+    "hostelerId": "1MH2016001",
+    "firstName": "Siddhart",
+    "lastName": "Jain",
+    "fatherName": "ManMohan Agarwal",
+    "motherName": "Renu Agarwal",
+    "phoneNumber": "+919079256741",
+    "alternativePhoneNumber": "+917340137839",
+    "emailId": "mohitagr00001@gmail.com",
+    "college": "DSCE",
+    "course": "B.E",
+    "floor": 2,
+    "roomNumber": 202,
+    "age": 22,
+    "dateOfJoining": "2016-08-26",
+    "dateOfBirth": "1998-09-13",
+    "addressOfNative": "murlipura ,jaipur, 302039",
+    "addressOfCorrespondence": "",
+    "haveVehicle": true
+  }
