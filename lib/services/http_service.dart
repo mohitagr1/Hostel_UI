@@ -4,7 +4,7 @@ import 'package:hoste_ui/models/index.dart';
 import 'package:http/http.dart' as http;
 
 class HttpService {
-  final String hostelerURL = "http://localhost:9090/hosteler/get/1";
+  final String hostelerURL = "http://192.168.43.207:9090/hosteler/get/1";
   Future<Hosteler> getHosteler() async {
     print("I am here");
     http.Response res = await http.get(hostelerURL);
