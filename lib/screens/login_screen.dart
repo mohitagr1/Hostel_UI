@@ -26,14 +26,18 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Future<bool> apicall(String userid, String pass) async {
     print("iiihihi");
-    var url = "http://localhost:9090/login/loginVer/$userid/$pass";
+    var url = "http://192.168.43.207:9090/login/loginVer/$userid/$pass";
     // var url = "https://flutter.dev/";
-    var response = await http.read(url);
+    http.Response response = await http.get(url);
     print("nono");
-    print(response);
+    print(response.body);
     print("yoyo");
-    // print(json.decode(response.body));
-    return true;
+    if (response.statusCode == 200) {
+      print(json.decode(response.body));
+      return (json.decode(response.body));
+    } else {
+      throw "Can't get Hostelers.";
+    }
   }
 
   lookit() {}
