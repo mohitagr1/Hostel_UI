@@ -92,11 +92,41 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 future: hosteler,
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
-                    return Text(
-                      snapshot.data.addressOfNative,
-                      style: TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
+                    return Expanded(
+                      child: ListView.builder(
+                        physics: NeverScrollableScrollPhysics(),
+                        itemCount: _profile.profileDetailsList.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          ProfileDetailsListItem profileItemList =
+                              _profile.profileDetailsList.elementAt(index);
+                          return Stack(
+                            children: <Widget>[
+                              ListTile(
+                                leading: Container(
+                                  decoration: BoxDecoration(
+                                    color: Theme.of(context).accentColor,
+                                    shape: BoxShape.circle,
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.grey[300],
+                                        blurRadius: 8.0,
+                                      ),
+                                    ],
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: Icon(
+                                      profileItemList.leadingIcon,
+                                      color: Theme.of(context).primaryColor,
+                                    ),
+                                  ),
+                                ),
+                                title: Text(profileItemList.title),
+                                subtitle: Text(profileItemList.titleValue),
+                              )
+                            ],
+                          );
+                        },
                       ),
                     );
                   } else if (snapshot.hasError) {
@@ -116,47 +146,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 },
               ),
             ),
-
-            // Expanded(
-            //   child: ListView.builder(
-            //     physics: NeverScrollableScrollPhysics(),
-            //     itemCount: _profile.profileDetailsList.length,
-            //     itemBuilder: (BuildContext context, int index) {
-            //       ProfileDetailsListItem profileItemList =
-            //           _profile.profileDetailsList.elementAt(index);
-            //       return Stack(
-            //         children: <Widget>[
-            //           ListTile(
-            //             leading: Container(
-            //               decoration: BoxDecoration(
-            //                 color: Theme.of(context).accentColor,
-            //                 shape: BoxShape.circle,
-            //                 boxShadow: [
-            //                   BoxShadow(
-            //                     color: Colors.grey[300],
-            //                     blurRadius: 8.0,
-            //                   ),
-            //                 ],
-            //               ),
-            //               child: Padding(
-            //                 padding: const EdgeInsets.all(10.0),
-            //                 child: Icon(
-            //                   profileItemList.leadingIcon,
-            //                   color: Theme.of(context).primaryColor,
-            //                 ),
-            //               ),
-            //             ),
-            //             title: Text(profileItemList.title),
-            //             subtitle: Text(profileItemList.titleValue),
-            //           )
-            //         ],
-            //       );
-            //     },
-            //   ),
-            // ),
-            // SizedBox(
-            //   height: 10,
-            // )
+            SizedBox(
+              height: 10,
+            )
           ],
         ),
       ),

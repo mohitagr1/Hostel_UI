@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:ffi';
 
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:flare_flutter/flare_controller.dart';
@@ -7,6 +8,7 @@ import 'package:hoste_ui/teddy_github/teddy_controller.dart';
 import 'package:hoste_ui/teddy_github/tracking_text_input.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -15,9 +17,16 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   TeddyController _teddyController;
+
+  Future<SharedPreferences> sharedPreferences = SharedPreferences.getInstance();
+  SharedPreferences _preferences;
   @override
   initState() {
     _teddyController = TeddyController();
+    sharedPreferences.then((SharedPreferences sharedPreferences) {
+      return (sharedPreferences.getBool('isLoggedIn') ?? false);
+    });
+    _checkPref();
     super.initState();
   }
 
@@ -25,22 +34,38 @@ class _LoginScreenState extends State<LoginScreen> {
   final _passwordController = TextEditingController();
 
   Future<bool> apicall(String userid, String pass) async {
-    print("iiihihi");
-    var url = "http://192.168.43.207:9090/login/loginVer/$userid/$pass";
-    // var url = "https://flutter.dev/";
+    var url = "http://192.168.43.207:9090/login/get/$userid/$pass";
     http.Response response = await http.get(url);
-    print("nono");
     print(response.body);
-    print("yoyo");
     if (response.statusCode == 200) {
-      print(json.decode(response.body));
-      return (json.decode(response.body));
+      if (json.decode(response.body)) {
+        await _preferences.setBool('isLoggedIn', true);
+        _teddyController.play("success");
+        Future.delayed(Duration(seconds: 1), () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => HomeScreen()),
+          );
+        });
+      } else {
+        await _preferences.setBool('isLoggedIn', false);
+        _teddyController.play("fail");
+      }
     } else {
       throw "Can't get Hostelers.";
     }
   }
 
-  lookit() {}
+  Future<Void> _checkPref() async {
+    _preferences = await sharedPreferences;
+    print(_preferences.getBool('isLoggedIn'));
+    if (_preferences.getBool('isLoggedIn')!=null && _preferences.getBool('isLoggedIn')) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => HomeScreen()),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +88,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 Container(
                   padding: EdgeInsets.only(right: 10),
                   height: 200,
-                  width: MediaQuery.of(context).size.width-80,
+                  width: MediaQuery.of(context).size.width - 80,
                   // color: Colors.blue,
                   child: FlareActor(
                     "assets/flare/Teddy.flr",
@@ -77,7 +102,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   onCaretMoved: (Offset caret) {
                     _teddyController.lookAt(caret);
                   },
-                  onTextChanged: (String value){
+                  onTextChanged: (String value) {
                     _usernameController.text = value;
                   },
                 ),
@@ -125,15 +150,6 @@ class _LoginScreenState extends State<LoginScreen> {
     // _teddyController.submitPassword();
     String _username = _usernameController.text;
     String _password = _passwordController.text;
-    if(_password=="lokesh"){
-      _teddyController.play("success");
-      // Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()));
-    }
-    else{
-      _teddyController.play("fail");
-    }
-
-    print('login attempt: $_username with $_password');
     apicall(_username, _password);
   }
 }
