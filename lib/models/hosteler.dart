@@ -1,5 +1,7 @@
 
-class Hosteler {
+import 'package:flutter/widgets.dart';
+
+class Hosteler with ChangeNotifier{
     final num id;
     final String hostelerId;
     final String lastName;
@@ -22,7 +24,7 @@ class Hosteler {
 
   Hosteler({this.id, this.hostelerId, this.lastName, this.firstName, this.fatherName, this.motherName, this.phoneNumber, this.alternativePhoneNumber, this.emailId, this.college, this.course, this.floor, this.roomNumber, this.age, this.dateOfJoining, this.dateOfBirth, this.addressOfNative, this.addressOfCorrespondence, this.haveVehicle});
     
-    factory Hosteler.fromJson(Map<String,dynamic> json) {
+    Hosteler fromJson(Map<String,dynamic> json) {
       return Hosteler(
 
     id : json['id'] as num,

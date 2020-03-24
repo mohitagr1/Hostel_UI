@@ -8,7 +8,7 @@ class HttpService {
   Future<Hosteler> getHosteler() async {
     http.Response res = await http.get(hostelerURL);
     if (res.statusCode == 200) {
-      return Hosteler.fromJson(json.decode(res.body));
+      return Hosteler().fromJson(json.decode(res.body));
     } else {
       throw "Can't get Hostelers.";
     }

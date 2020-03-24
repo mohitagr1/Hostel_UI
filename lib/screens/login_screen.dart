@@ -63,7 +63,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 Container(
                   padding: EdgeInsets.only(right: 10),
                   height: 200,
-                  width: MediaQuery.of(context).size.width-80,
+                  width: MediaQuery.of(context).size.width - 80,
                   // color: Colors.blue,
                   child: FlareActor(
                     "assets/flare/Teddy.flr",
@@ -77,7 +77,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   onCaretMoved: (Offset caret) {
                     _teddyController.lookAt(caret);
                   },
-                  onTextChanged: (String value){
+                  onTextChanged: (String value) {
                     _usernameController.text = value;
                   },
                 ),
@@ -125,11 +125,10 @@ class _LoginScreenState extends State<LoginScreen> {
     // _teddyController.submitPassword();
     String _username = _usernameController.text;
     String _password = _passwordController.text;
-    if(_password=="lokesh"){
+    if (_password == "lokesh") {
       _teddyController.play("success");
       // Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()));
-    }
-    else{
+    } else {
       _teddyController.play("fail");
     }
 

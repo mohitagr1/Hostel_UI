@@ -1,6 +1,8 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:hoste_ui/models/hosteler.dart';
+import 'package:hoste_ui/services/http_service.dart';
 
 class Profile {
   final String imageAddress;
@@ -19,6 +21,11 @@ class ProfileDetailsListItem {
   ProfileDetailsListItem(this.leadingIcon, this.title, this.titleValue);
 }
 
+class FetchData with ChangeNotifier{
+
+Future<Hosteler> hosteler = HttpService().getHosteler();
+
+void setValues(){
 final myprofile = new Profile(
   "assets/images/demo_person_image.jpeg",
   "Lokesh Kedia",
@@ -86,3 +93,6 @@ final myprofile = new Profile(
     )
   ],
 );
+}
+
+}
