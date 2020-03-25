@@ -45,8 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     ThemeColors colors = Provider.of<ThemeColors>(context);
 
-    return MaterialApp(
-      home: Scaffold(
+    return  Scaffold(
         appBar: AppBar(
           backgroundColor: colors.getPrimaryColor(),
           actions: <Widget>[
@@ -88,7 +87,6 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
           type: BottomNavigationBarType.fixed,
         ),
-      ),
     );
   }
 }
