@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hoste_ui/screens/login_screen.dart';
 
-import 'screens/home_screen.dart';
-
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -12,7 +10,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Hostel UI',
-      
       theme: ThemeData(
         fontFamily: 'Montserrat',
         primaryColor: Color(0xff5748AF),

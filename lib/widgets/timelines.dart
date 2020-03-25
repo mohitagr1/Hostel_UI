@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:hoste_ui/models/meals.dart';
+import 'package:hoste_ui/widgets/meal_card.dart';
 
-class MealTimeLine extends StatelessWidget {
+class MealTimeLine extends StatefulWidget {
+  @override
+  _MealTimeLineState createState() => _MealTimeLineState();
+}
+
+class _MealTimeLineState extends State<MealTimeLine> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -30,67 +36,11 @@ class MealTimeLine extends StatelessWidget {
                   SizedBox(
                     height: 5,
                   ),
-                  Expanded(
-                    child: Row(
-                      children: <Widget>[
-                        Container(
-                          width: MediaQuery.of(context).size.width * (3 / 4),
-                          decoration: BoxDecoration(
-                            color: mealTimeline.color,
-                            borderRadius: BorderRadius.circular(20.0),
-                          ),
-                          child: Padding(
-                            padding: EdgeInsets.all(20.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                Text(
-                                  mealTimeline.mealType,
-                                  style: TextStyle(
-                                      fontSize: 24.0,
-                                      color: Theme.of(context).accentColor,
-                                      fontWeight: FontWeight.bold,
-                                      letterSpacing: 1.0),
-                                ),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Container(
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(50),
-                                    color: Theme.of(context).accentColor,
-                                  ),
-                                  child: Padding(
-                                    padding: EdgeInsets.all(3.0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: <Widget>[
-                                        Icon(
-                                          Icons.access_time,
-                                          color: mealTimeline.color,
-                                        ),
-                                        SizedBox(
-                                          width: 10,
-                                        ),
-                                        Text(
-                                          mealTimeline.mealOffTime,
-                                          style: TextStyle(
-                                              color: mealTimeline.color),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 20,
-                        ),
-                      ],
-                    ),
-                  ),
+                  MealCard(
+                    color: mealTimeline.color,
+                    mealOffTime: mealTimeline.mealOffTime,
+                    mealType: mealTimeline.mealType,
+                  )
                 ],
               ),
             ],
