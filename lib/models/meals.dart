@@ -7,7 +7,7 @@ class Meals{
   final String mealOffTime;
   final Color color;
 
-  Meals(this.mealType, this.mealOffTime, this.color);
+  Meals(this.mealType, this.mealOffTime, this.color,);
 }
 
 final List<Meals> mealList = [

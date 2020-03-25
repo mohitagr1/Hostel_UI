@@ -40,7 +40,7 @@ class Hosteler {
       this.addressOfCorrespondence,
       this.haveVehicle});
 
-  factory Hosteler.fromJson(Map<String, dynamic> json) {
+  factory Hosteler.fromJson(dynamic json) {
     return Hosteler(
       id: json['id'] as num,
       hostelerId: json['hostelerId'] as String,

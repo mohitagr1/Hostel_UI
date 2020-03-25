@@ -8,30 +8,29 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  int _selectedIndex = 0;
+  static List<Widget> _widgetOptions = <Widget>[
+    CalendarScreen(),
+    ProfileScreen()
+  ];
 
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
-
-int _selectedIndex = 0;
-
-static List<Widget> _widgetOptions = <Widget>[
-  CalendarScreen(),
-  ProfileScreen()
-];
-
-void _onItemTapped(int index) {
-  setState(() {
-    _selectedIndex = index;
-  });
-}
-
-
-
-
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: _selectedIndex==0 ?Theme.of(context).primaryColor:Theme.of(context).accentColor,
+      backgroundColor: _selectedIndex == 0
+          ? Theme.of(context).primaryColor
+          : Theme.of(context).accentColor,
       appBar: AppBar(
         actions: <Widget>[
           IconButton(

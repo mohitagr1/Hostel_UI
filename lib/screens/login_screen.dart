@@ -1,8 +1,6 @@
 import 'dart:convert';
-import 'dart:ffi';
 
 import 'package:flare_flutter/flare_actor.dart';
-import 'package:flare_flutter/flare_controller.dart';
 import 'package:hoste_ui/screens/home_screen.dart';
 import 'package:hoste_ui/teddy_github/teddy_controller.dart';
 import 'package:hoste_ui/teddy_github/tracking_text_input.dart';
@@ -33,13 +31,14 @@ class _LoginScreenState extends State<LoginScreen> {
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
 
-  Future<bool> apicall(String userid, String pass) async {
-    var url = "http://192.168.43.207:9090/login/get/$userid/$pass";
+  void apicall(String userid, String pass) async {
+    var url = "http://192.168.43.116:9090/login/get/$userid/$pass";
     http.Response response = await http.get(url);
     print(response.body);
     if (response.statusCode == 200) {
       if (json.decode(response.body)) {
         await _preferences.setBool('isLoggedIn', true);
+        await _preferences.setString('hostelerId', userid);
         _teddyController.play("success");
         Future.delayed(Duration(seconds: 1), () {
           Navigator.push(
@@ -49,6 +48,7 @@ class _LoginScreenState extends State<LoginScreen> {
         });
       } else {
         await _preferences.setBool('isLoggedIn', false);
+        await _preferences.remove('hostelerId');
         _teddyController.play("fail");
       }
     } else {
@@ -56,10 +56,11 @@ class _LoginScreenState extends State<LoginScreen> {
     }
   }
 
-  Future<Void> _checkPref() async {
+  void _checkPref() async {
     _preferences = await sharedPreferences;
     print(_preferences.getBool('isLoggedIn'));
-    if (_preferences.getBool('isLoggedIn')!=null && _preferences.getBool('isLoggedIn')) {
+    if (_preferences.getBool('isLoggedIn') != null &&
+        _preferences.getBool('isLoggedIn')) {
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => HomeScreen()),
@@ -70,7 +71,6 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: Colors.grey[100],
       body: Center(
         child: SingleChildScrollView(
           child: Container(
@@ -147,7 +147,6 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void _performLogin() {
-    // _teddyController.submitPassword();
     String _username = _usernameController.text;
     String _password = _passwordController.text;
     apicall(_username, _password);
