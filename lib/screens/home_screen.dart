@@ -21,7 +21,6 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
-  int demoIndex = 0;
   bool isSwitched = false;
 
   static List<Widget> _widgetOptions = <Widget>[
