@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hoste_ui/models/themecolors.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 final List<String> dowList = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
@@ -31,6 +33,7 @@ class _MyCalendarState extends State<MyCalendar> {
 
   @override
   Widget build(BuildContext context) {
+    ThemeColors colors = Provider.of<ThemeColors>(context);
     return Container(
       // height: MediaQuery.of(context).size.height,
       // color: Colors.red,
@@ -40,7 +43,7 @@ class _MyCalendarState extends State<MyCalendar> {
         calendarStyle: CalendarStyle(
           outsideDaysVisible: false,
           weekendStyle: TextStyle(
-            color: Color(0xff393834),
+            color: Colors.green,
             fontWeight: FontWeight.bold,
           ),
           weekdayStyle: TextStyle(
