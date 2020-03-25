@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:hoste_ui/models/themecolors.dart';
 import 'package:hoste_ui/screens/login_screen.dart';
+import 'package:provider/provider.dart';
 
-import 'screens/home_screen.dart';
-
-void main() => runApp(MyApp());
+void main() => runApp(ChangeNotifierProvider<ThemeColors>(
+      create: (_) => ThemeColors(),
+      child: MyApp(),
+    ));
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -12,12 +15,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Hostel UI',
-      
-      theme: ThemeData(
-        fontFamily: 'Montserrat',
-        primaryColor: Color(0xff5748AF),
-        accentColor: Colors.white,
-      ),
+
+      // theme: ThemeData(
+      //   fontFamily: 'Montserrat',
+      //   primaryColor: Color(0xff5748AF),
+      //   accentColor: Colors.white,
+      // ),
       home: LoginScreen(),
     );
   }

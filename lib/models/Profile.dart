@@ -1,10 +1,4 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:hoste_ui/models/hosteler.dart';
-import 'package:hoste_ui/services/http_service.dart';
-import 'package:provider/provider.dart';
-
 class Profile {
   final String imageAddress;
   final String name;

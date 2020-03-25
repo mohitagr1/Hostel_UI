@@ -2,12 +2,13 @@ import 'dart:convert';
 import 'dart:ffi';
 
 import 'package:flare_flutter/flare_actor.dart';
-import 'package:flare_flutter/flare_controller.dart';
+import 'package:hoste_ui/models/themecolors.dart';
 import 'package:hoste_ui/screens/home_screen.dart';
 import 'package:hoste_ui/teddy_github/teddy_controller.dart';
 import 'package:hoste_ui/teddy_github/tracking_text_input.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -59,7 +60,8 @@ class _LoginScreenState extends State<LoginScreen> {
   Future<Void> _checkPref() async {
     _preferences = await sharedPreferences;
     print(_preferences.getBool('isLoggedIn'));
-    if (_preferences.getBool('isLoggedIn')!=null && _preferences.getBool('isLoggedIn')) {
+    if (_preferences.getBool('isLoggedIn') != null &&
+        _preferences.getBool('isLoggedIn')) {
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => HomeScreen()),
@@ -148,8 +150,13 @@ class _LoginScreenState extends State<LoginScreen> {
 
   void _performLogin() {
     // _teddyController.submitPassword();
-    String _username = _usernameController.text;
-    String _password = _passwordController.text;
-    apicall(_username, _password);
+    // String _username = _usernameController.text;
+    // String _password = _passwordController.text;
+    //apicall(_username, _password);
+
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => HomeScreen()),
+    );
   }
 }

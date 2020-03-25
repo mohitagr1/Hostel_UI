@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hoste_ui/models/Profile.dart';
 import 'package:hoste_ui/models/index.dart';
+import 'package:hoste_ui/models/themecolors.dart';
 import 'package:hoste_ui/services/http_service.dart';
+import 'package:provider/provider.dart';
 
 class ProfileScreen extends StatefulWidget {
   @override
@@ -27,9 +29,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
+    ThemeColors colors = Provider.of<ThemeColors>(context);
     _height = MediaQuery.of(context).size.height;
     return SingleChildScrollView(
       child: Container(
+        color: colors.getAccentcolor(),
         height: MediaQuery.of(context).size.height,
         child: Column(
           children: <Widget>[
@@ -39,7 +43,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 Container(
                   height: _height * _headerRatio,
                   decoration: BoxDecoration(
-                    color: Theme.of(context).primaryColor,
+                    color: colors.getPrimaryColor(),
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(20),
                     ),
