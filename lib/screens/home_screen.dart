@@ -24,7 +24,6 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
   bool isSwitched;
-  SharedPreferences _sharedPreferences;
 
   static List<Widget> _widgetOptions = <Widget>[
     CalendarScreen(),
@@ -37,22 +36,6 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
-  @override
-  void initState() {
-    super.initState();
-    _checkMode();
-  }
-
-  _checkMode() async {
-    _sharedPreferences = await SharedPreferences.getInstance();
-    ThemeColors colors = Provider.of<ThemeColors>(context, listen: false);
-    setState(() {
-      print("drakMode: ");
-      print(_sharedPreferences.getBool("isDarkMode"));
-      isSwitched = _sharedPreferences.getBool("isDarkMode") ?? false;
-      isSwitched ? colors.setIndexNo(1) : colors.setIndexNo(0);
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +62,9 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
         elevation: 0.0,
       ),
-      drawer: Drawer(child: DrawerScreen()),
+      drawer: Drawer(
+        child: DrawerScreen()
+      ),
       body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: colors.getbottomBarBackgoundColor(),

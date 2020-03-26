@@ -13,19 +13,31 @@ class _DrawerScreenState extends State<DrawerScreen> {
   void changeStatusBarColor(Color col) async {
     await FlutterStatusbarcolor.setStatusBarColor(col);
   }
+  SharedPreferences _sharedPreferences;
+  bool isSwitched;
 
-  addData(bool val) async {
-    SharedPreferences preferences = await SharedPreferences.getInstance();
-    preferences.setBool('isDarkMode', val);
-
-    print("New Is DarkMode is");
-    print(preferences.getBool('isDarkMode'));
+  @override
+  void initState() {
+    super.initState();
+    _checkMode();
   }
+
+  _checkMode() async {
+    _sharedPreferences = await SharedPreferences.getInstance();
+    ThemeColors colors = Provider.of<ThemeColors>(context, listen: false);
+    setState(() {
+      print("drakMode: ");
+      print(_sharedPreferences.getBool("isDarkMode"));
+      isSwitched = _sharedPreferences.getBool("isDarkMode") ?? false;
+      isSwitched ? colors.setIndexNo(1) : colors.setIndexNo(0);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     ThemeColors colors = Provider.of<ThemeColors>(context);
 
-    bool isSwitched = colors.indexNo == 0 ? false : true;
+    isSwitched = colors.indexNo == 0 ? false : true;
 
     return Container(
       color: colors.getAccentcolor(),
@@ -57,23 +69,23 @@ class _DrawerScreenState extends State<DrawerScreen> {
           ),
           SwitchListTile(
               title: Text(
-                'DarkTheme',
+                isSwitched?'Apply Light Theme':'Apply Dark Theme',
                 style: TextStyle(
                   color: colors.getTimelineTextColor(),
                 ),
               ),
               secondary: Icon(
-                Icons.brightness_low,
+                isSwitched?Icons.brightness_3:Icons.wb_sunny,
                 color: colors.getTimelineTextColor(),
               ),
               value: isSwitched,
               onChanged: (val) {
-                print("Vallll is $val");
-                addData(val);
                 changeStatusBarColor(colors.getStatusBarColor());
+                print("on change");
+                print(val);
+                _sharedPreferences.setBool("isDarkMode", val);
                 isSwitched = val;
                 val ? colors.setIndexNo(1) : colors.setIndexNo(0);
-                Navigator.of(context).pop();
               })
         ],
       ),
