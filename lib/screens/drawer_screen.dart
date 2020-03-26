@@ -69,13 +69,13 @@ class _DrawerScreenState extends State<DrawerScreen> {
           ),
           SwitchListTile(
               title: Text(
-                'DarkTheme',
+                isSwitched?'Apply Light Theme':'Apply Dark Theme',
                 style: TextStyle(
                   color: colors.getTimelineTextColor(),
                 ),
               ),
               secondary: Icon(
-                Icons.brightness_low,
+                isSwitched?Icons.brightness_3:Icons.wb_sunny,
                 color: colors.getTimelineTextColor(),
               ),
               value: isSwitched,
@@ -86,7 +86,6 @@ class _DrawerScreenState extends State<DrawerScreen> {
                 _sharedPreferences.setBool("isDarkMode", val);
                 isSwitched = val;
                 val ? colors.setIndexNo(1) : colors.setIndexNo(0);
-                Navigator.of(context).pop();
               })
         ],
       ),
