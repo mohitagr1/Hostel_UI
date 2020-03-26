@@ -1,11 +1,12 @@
-import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:hoste_ui/models/index.dart';
-import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:hoste_ui/models/themecolors.dart';
+import 'package:provider/provider.dart';
 
 const url = "http://192.168.43.116:9090/hosteler/getByHostelerId/";
+
 
 class ProfileScreen extends StatefulWidget {
 
@@ -39,6 +40,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
+    ThemeColors colors = Provider.of<ThemeColors>(context);
     _height = MediaQuery.of(context).size.height;
     return FutureBuilder(
       future: updateUI(),
@@ -47,6 +49,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           Hosteler hosteler = snapshot.data;
           return SingleChildScrollView(
             child: Container(
+              color: colors.getAccentcolor(),
               height: MediaQuery.of(context).size.height + 100,
               child: Column(
                 children: <Widget>[
@@ -122,13 +125,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   Widget _profileHeader(String name, String emailId, String imageAddress) {
+    ThemeColors colors = Provider.of<ThemeColors>(context);
     return Stack(
       overflow: Overflow.visible,
       children: <Widget>[
         Container(
           height: _height * _headerRatio,
           decoration: BoxDecoration(
-            color: Theme.of(context).primaryColor,
+            color: colors.getPrimaryColor(),
             borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(20),
             ),

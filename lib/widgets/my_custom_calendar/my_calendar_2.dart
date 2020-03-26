@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hoste_ui/models/themecolors.dart';
+import 'package:provider/provider.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 import 'custom_calendar_header.dart';
@@ -30,6 +32,8 @@ class _MyCustomCalendarState extends State<MyCustomCalendar> {
 
   @override
   Widget build(BuildContext context) {
+
+    ThemeColors colors = Provider.of<ThemeColors>(context);
     return Center(
       child: Container(
         child: Column(
@@ -43,11 +47,11 @@ class _MyCustomCalendarState extends State<MyCustomCalendar> {
               calendarStyle: CalendarStyle(
                 outsideDaysVisible: false,
                 weekendStyle: TextStyle(
-                  color: Color(0xff393834),
+                  color: colors.getWeekendColors(),
                   fontWeight: FontWeight.bold,
                 ),
                 weekdayStyle: TextStyle(
-                  color: Color(0xff393834),
+                  color: colors.getWeekDayColors(),//Color(0xff393834),
                   fontWeight: FontWeight.bold,
                 ),
               ),
