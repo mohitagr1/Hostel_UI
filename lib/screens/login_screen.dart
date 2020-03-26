@@ -149,10 +149,10 @@ class _LoginScreenState extends State<LoginScreen> {
   void _performLogin() {
     String _username = _usernameController.text;
     String _password = _passwordController.text;
-    apicall(_username, _password);
-    // Navigator.push(
-    //   context,
-    //   MaterialPageRoute(builder: (context) => HomeScreen()),
-    // );
+    //apicall(_username, _password);
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => HomeScreen()),
+    );
   }
 }

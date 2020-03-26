@@ -58,8 +58,14 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     ThemeColors colors = Provider.of<ThemeColors>(context);
     //Gets executed once and sets the status bar color at the launch of the application
-    SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(statusBarColor: Color(0xff5748AF)));
+
+    if (colors.indexNo==0) {
+      SystemChrome.setSystemUIOverlayStyle(
+          SystemUiOverlayStyle(statusBarColor: Color(0xff5748AF)));
+    } else {
+      SystemChrome.setSystemUIOverlayStyle(
+          SystemUiOverlayStyle(statusBarColor: Color(0xff212121)));
+    }
 
     return Scaffold(
       appBar: AppBar(
@@ -73,9 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
         elevation: 0.0,
       ),
-      drawer: Drawer(
-        child: DrawerScreen()
-      ),
+      drawer: Drawer(child: DrawerScreen()),
       body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: colors.getbottomBarBackgoundColor(),
