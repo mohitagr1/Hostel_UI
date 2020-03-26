@@ -38,7 +38,8 @@ class CalendarScreenHeader extends StatelessWidget {
                     fontSize: 25),
               ),
               SizedBox(
-                height: 20,
+               //Set Height to 30 until the single pixel bar issue if fixed
+                height: 30,
               ),
             ],
           ),

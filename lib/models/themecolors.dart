@@ -12,11 +12,9 @@ class ThemeColors extends ChangeNotifier {
   final List<Color> mainBackgroundColor = [Color(0xff5748AF), Colors.black];
   final List<Color> calBackgorundColor = [Colors.white, Color(0xff212121)];
 
-
   final List<Color> initialDateColor = [Color(0xff5748AF), Colors.white];
   final List<Color> weekendColors = [Color(0xff5748AF), Colors.grey[400]];
   final List<Color> weekdayColors = [Color(0xff393834), Colors.grey[700]];
-
 
   final List<Color> timelineBackColor = [Colors.grey[200], Colors.grey[800]];
   final List<Color> timelineTextColor = [Colors.black, Colors.white];
@@ -33,8 +31,14 @@ class ThemeColors extends ChangeNotifier {
 
   final List<Color> bottomBarText = [Color(0xff5748AF), Colors.grey[300]];
   final List<Color> bottomBarBackgoundColor = [Colors.white, Colors.black];
+  final List<Color> statusBarColor = [
+    Color(0xff212121),
+    Color(0xff5748AF),
+  ];
 
-  
+  Color getStatusBarColor() {
+    return statusBarColor[indexNo];
+  }
 
   Color getbottomBarBackgoundColor() {
     return bottomBarBackgoundColor[indexNo];
