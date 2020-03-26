@@ -9,10 +9,6 @@ class DrawerScreen extends StatefulWidget {
 }
 
 class _DrawerScreenState extends State<DrawerScreen> {
-  // void changeStatusBarColor(Color col) async {
-  //   await FlutterStatusbarcolor.setStatusBarColor(col);
-  // }
-
   SharedPreferences _sharedPreferences;
   bool isSwitched;
 
@@ -24,13 +20,6 @@ class _DrawerScreenState extends State<DrawerScreen> {
 
   _checkMode() async {
     _sharedPreferences = await SharedPreferences.getInstance();
-    // ThemeColors colors = Provider.of<ThemeColors>(context, listen: false);
-    // setState(() {
-    // print("drakMode: ");
-    // print(_sharedPreferences.getBool("isDarkMode"));
-    // isSwitched = _sharedPreferences.getBool("isDarkMode") ?? false;
-    // isSwitched ? colors.setIndexNo(1) : colors.setIndexNo(0);
-    // });
   }
 
   @override
@@ -43,18 +32,9 @@ class _DrawerScreenState extends State<DrawerScreen> {
       color: colors.getAccentcolor(),
       child: ListView(
         //Padding must be Zero for normal functioning of the drawer
-        padding: const EdgeInsets.all(00.0),
+        // padding: const EdgeInsets.all(00.0),
+        // Its working perfectly without it also.
         children: <Widget>[
-          // UserAccountsDrawerHeader(
-            
-          //   currentAccountPicture: CircleAvatar(
-          //     // radius: 30,
-          //     backgroundImage:
-          //         AssetImage("assets/images/demo_person_image.jpeg"),
-          //   ),
-          //   accountName: Text("Mohit"),
-          //   accountEmail: Text("mohitagr00001@gmail.com"),
-          // ),
           DrawerHeader(
             padding: EdgeInsets.zero,
             child: Container(
@@ -90,7 +70,6 @@ class _DrawerScreenState extends State<DrawerScreen> {
               ),
               value: isSwitched,
               onChanged: (val) {
-                // changeStatusBarColor(colors.getStatusBarColor());
                 print("on change");
                 print(val);
                 _sharedPreferences.setBool("isDarkMode", val);
