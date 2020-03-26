@@ -18,11 +18,11 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Hostel UI',
 
-      // theme: ThemeData(
-      //   fontFamily: 'Montserrat',
-      //   primaryColor: Color(0xff5748AF),
-      //   accentColor: Colors.white,
-      // ),
+      theme: ThemeData(
+        fontFamily: 'Montserrat',
+        primaryColor: Color(0xff5748AF),
+        accentColor: Colors.white,
+      ),
       home: LoginScreen(),
     );
   }
