@@ -1,4 +1,3 @@
-
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -10,9 +9,7 @@ import 'package:provider/provider.dart';
 
 const url = "http://192.168.43.116:9090/hosteler/getByHostelerId/";
 
-
 class ProfileScreen extends StatefulWidget {
-
   @override
   _ProfileScreenState createState() => _ProfileScreenState();
 }

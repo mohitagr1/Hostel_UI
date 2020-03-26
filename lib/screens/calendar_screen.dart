@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hoste_ui/models/themecolors.dart';
 import 'package:hoste_ui/widgets/calendar_screen_header.dart';
-import 'package:hoste_ui/widgets/my_custom_calendar/my_calendar_2.dart';
+import 'package:hoste_ui/widgets/my_custom_calendar/my_custom_calendar.dart';
 import 'package:hoste_ui/widgets/timelines.dart';
 import 'package:provider/provider.dart';
 
@@ -17,7 +17,6 @@ class CalendarScreen extends StatelessWidget {
           Container(
             color: colors.getPrimaryColor(),
             child: Container(
-              // height: MediaQuery.of(context).size.height,
               decoration: BoxDecoration(
                 color: colors.getAccentcolor(),
                 borderRadius: BorderRadius.only(
@@ -27,9 +26,11 @@ class CalendarScreen extends StatelessWidget {
               ),
               child: Column(
                 children: <Widget>[
-                  // MyCalendar(),
                   MyCustomCalendar(),
-                  Divider(color: colors.getTimelineBackColor(),thickness: 2,),
+                  Divider(
+                    color: colors.getTimelineBackColor(),
+                    thickness: 2,
+                  ),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                     child: Container(

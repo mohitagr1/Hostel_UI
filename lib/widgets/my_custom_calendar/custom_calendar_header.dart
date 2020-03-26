@@ -13,15 +13,6 @@ class CustomCalendarHeader extends StatefulWidget {
 }
 
 class _CustomCalendarHeaderState extends State<CustomCalendarHeader> {
-  // Future<DateTime> selectDate(BuildContext context) async {
-  //   final DateTime picked = await MonthPicker(
-  //     context: context,
-  //     initialDate: DateTime.now(),
-  //     firstDate: DateTime(1970),
-  //     lastDate: DateTime(2090),
-  //   );
-  // }
-
   @override
   Widget build(BuildContext context) {
     ThemeColors colors = Provider.of<ThemeColors>(context);

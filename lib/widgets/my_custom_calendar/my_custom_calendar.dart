@@ -32,7 +32,6 @@ class _MyCustomCalendarState extends State<MyCustomCalendar> {
 
   @override
   Widget build(BuildContext context) {
-
     ThemeColors colors = Provider.of<ThemeColors>(context);
     return Center(
       child: Container(
@@ -51,7 +50,7 @@ class _MyCustomCalendarState extends State<MyCustomCalendar> {
                   fontWeight: FontWeight.bold,
                 ),
                 weekdayStyle: TextStyle(
-                  color: colors.getWeekDayColors(),//Color(0xff393834),
+                  color: colors.getWeekDayColors(), //Color(0xff393834),
                   fontWeight: FontWeight.bold,
                 ),
               ),

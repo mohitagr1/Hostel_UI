@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:hoste_ui/models/themecolors.dart';
 import 'package:hoste_ui/screens/calendar_screen.dart';
 import 'package:hoste_ui/screens/drawer_screen.dart';
@@ -8,15 +7,6 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeScreen extends StatefulWidget {
-  HomeScreen() {
-    addData();
-  }
-
-  addData() async {
-    SharedPreferences preferences = await SharedPreferences.getInstance();
-    preferences.setInt('themeValue', 0);
-  }
-
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -24,6 +14,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
   bool isSwitched;
+  SharedPreferences _sharedPreferences;
 
   static List<Widget> _widgetOptions = <Widget>[
     CalendarScreen(),
@@ -36,14 +27,26 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
+  @override
+  void initState() {
+    super.initState();
+    _checkMode();
+  }
+
+  _checkMode() async {
+    _sharedPreferences = await SharedPreferences.getInstance();
+    ThemeColors colors = Provider.of<ThemeColors>(context, listen: false);
+    setState(() {
+      print("drakMode: ");
+      print(_sharedPreferences.getBool("isDarkMode"));
+      isSwitched = _sharedPreferences.getBool("isDarkMode") ?? false;
+      isSwitched ? colors.setIndexNo(1) : colors.setIndexNo(0);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     ThemeColors colors = Provider.of<ThemeColors>(context);
-    //Gets executed once and sets the status bar color at the launch of the application
-    SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(statusBarColor: Color(0xff5748AF)));
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: colors.getPrimaryColor(),
@@ -56,8 +59,8 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
         elevation: 0.0,
       ),
-      drawer: Drawer(
-        child: DrawerScreen()
+      drawer: SafeArea(
+        child: Drawer(child: DrawerScreen()),
       ),
       body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(

@@ -61,7 +61,7 @@ class _LoginScreenState extends State<LoginScreen> {
     print(_preferences.getBool('isLoggedIn'));
     if (_preferences.getBool('isLoggedIn') != null &&
         _preferences.getBool('isLoggedIn')) {
-      Navigator.push(
+      Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => HomeScreen()),
       );

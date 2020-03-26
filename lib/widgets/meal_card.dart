@@ -72,7 +72,6 @@ class _MealCardState extends State<MealCard> {
                   ),
                   Switch(
                     value: isSwitched,
-                    activeColor: colors.getAccentcolor(),
                     onChanged: (val) {
                       setState(() {
                         isSwitched = val;
