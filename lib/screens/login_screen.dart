@@ -41,7 +41,7 @@ class _LoginScreenState extends State<LoginScreen> {
         await _preferences.setString('hostelerId', userid);
         _teddyController.play("success");
         Future.delayed(Duration(seconds: 1), () {
-          Navigator.push(
+          Navigator.pushReplacement(
             context,
             MaterialPageRoute(builder: (context) => HomeScreen()),
           );

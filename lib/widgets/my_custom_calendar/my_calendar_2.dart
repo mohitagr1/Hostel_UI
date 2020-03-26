@@ -47,7 +47,7 @@ class _MyCustomCalendarState extends State<MyCustomCalendar> {
               calendarStyle: CalendarStyle(
                 outsideDaysVisible: false,
                 weekendStyle: TextStyle(
-                  color: colors.getWeekendColors(),
+                  color: colors.getWeekDayColors(),
                   fontWeight: FontWeight.bold,
                 ),
                 weekdayStyle: TextStyle(

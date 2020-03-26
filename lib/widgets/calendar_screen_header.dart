@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hoste_ui/models/themecolors.dart';
 import 'package:provider/provider.dart';
 
-class CalendarHeader extends StatelessWidget {
+class CalendarScreenHeader extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {

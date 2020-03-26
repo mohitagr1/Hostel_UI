@@ -1,6 +1,9 @@
 
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:hoste_ui/models/index.dart';
+import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:hoste_ui/models/themecolors.dart';
 import 'package:provider/provider.dart';
@@ -26,16 +29,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   Future<Hosteler> updateUI() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    // sharedPreferences.reload();
     print("Yo lets see");
     print(sharedPreferences.getString('hostelerId'));
-    // http.Response response =
-    //     await http.get(url + sharedPreferences.getString('hostelerId'));
-    // NetworkHelper networkHelper = NetworkHelper(url+sharedPreferences.getString('hostelerId'));
-    // var data = await networkHelper.getData();
-    // return Hosteler.fromJson(jsonDecode(response.body));
-    // print(hosteler.addressOfNative);
-    // return hosteler;
+    http.Response response =
+        await http.get(url + sharedPreferences.getString('hostelerId'));
+    return Hosteler.fromJson(jsonDecode(response.body));
   }
 
   @override
