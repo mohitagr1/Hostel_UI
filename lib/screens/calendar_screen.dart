@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hoste_ui/models/themecolors.dart';
-import 'package:hoste_ui/widgets/calendar_header.dart';
+import 'package:hoste_ui/widgets/calendar_screen_header.dart';
 import 'package:hoste_ui/widgets/my_custom_calendar/my_calendar_2.dart';
 import 'package:hoste_ui/widgets/timelines.dart';
 import 'package:provider/provider.dart';
@@ -13,7 +13,7 @@ class CalendarScreen extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: <Widget>[
-          CalendarHeader(),
+          CalendarScreenHeader(),
           Container(
             color: colors.getPrimaryColor(),
             child: Container(
@@ -45,6 +45,9 @@ class CalendarScreen extends StatelessWidget {
                     ),
                   ),
                   MealTimeLine(),
+                  SizedBox(
+                    height: 10,
+                  )
                 ],
               ),
             ),
