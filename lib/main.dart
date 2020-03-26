@@ -17,7 +17,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Hostel UI',
-
       theme: ThemeData(
         fontFamily: 'Montserrat',
         primaryColor: Color(0xff5748AF),

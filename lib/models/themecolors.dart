@@ -34,7 +34,12 @@ class ThemeColors extends ChangeNotifier {
   final List<Color> bottomBarText = [Color(0xff5748AF), Colors.grey[300]];
   final List<Color> bottomBarBackgoundColor = [Colors.white, Colors.black];
 
-  
+  final List<Color> statusBarColor = [Color(0xff212121),Color(0xff5748AF),];
+
+  Color getStatusBarColor()
+  {
+    return statusBarColor[indexNo];
+  }
 
   Color getbottomBarBackgoundColor() {
     return bottomBarBackgoundColor[indexNo];

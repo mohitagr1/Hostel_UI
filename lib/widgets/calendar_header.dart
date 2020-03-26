@@ -3,7 +3,6 @@ import 'package:hoste_ui/models/themecolors.dart';
 import 'package:provider/provider.dart';
 
 class CalendarHeader extends StatelessWidget {
-  
   @override
   Widget build(BuildContext context) {
     final ThemeColors colors = Provider.of<ThemeColors>(context);
@@ -38,7 +37,8 @@ class CalendarHeader extends StatelessWidget {
                     fontSize: 25),
               ),
               SizedBox(
-                height: 20,
+                //Set Height to 30 until the single pixel bar issue if fixed
+                height: 30,
               ),
             ],
           ),
