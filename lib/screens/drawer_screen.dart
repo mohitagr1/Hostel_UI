@@ -13,6 +13,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
   void changeStatusBarColor(Color col) async {
     await FlutterStatusbarcolor.setStatusBarColor(col);
   }
+
   SharedPreferences _sharedPreferences;
   bool isSwitched;
 
@@ -69,13 +70,13 @@ class _DrawerScreenState extends State<DrawerScreen> {
           ),
           SwitchListTile(
               title: Text(
-                isSwitched?'Apply Light Theme':'Apply Dark Theme',
+                isSwitched ? 'Apply Light Theme' : 'Apply Dark Theme',
                 style: TextStyle(
                   color: colors.getTimelineTextColor(),
                 ),
               ),
               secondary: Icon(
-                isSwitched?Icons.brightness_3:Icons.wb_sunny,
+                isSwitched ? Icons.brightness_3 : Icons.wb_sunny,
                 color: colors.getTimelineTextColor(),
               ),
               value: isSwitched,
