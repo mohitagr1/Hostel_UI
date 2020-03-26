@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 import 'package:hoste_ui/models/themecolors.dart';
 import 'package:hoste_ui/screens/calendar_screen.dart';
 import 'package:hoste_ui/screens/drawer_screen.dart';
@@ -8,20 +8,29 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeScreen extends StatefulWidget {
-  HomeScreen() {
-    addData();
-  }
-
-  addData() async {
-    SharedPreferences preferences = await SharedPreferences.getInstance();
-    preferences.setInt('themeValue', 0);
-  }
-
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  @override
+  void initState() {
+    super.initState();
+    changeStatusBarColor();
+  }
+
+  void changeStatusBarColor() async {
+    _sharedPreferences = await SharedPreferences.getInstance();
+
+    isSwitched = _sharedPreferences.getBool("isDarkMode") ?? false;
+    ThemeColors colors = Provider.of<ThemeColors>(context, listen: false);
+    isSwitched ? colors.setIndexNo(1) : colors.setIndexNo(0);
+    isSwitched
+        ? await FlutterStatusbarcolor.setStatusBarColor(Color(0xff212121))
+        : await FlutterStatusbarcolor.setStatusBarColor(Color(0xff5748AF));
+  }
+
+  SharedPreferences _sharedPreferences;
   int _selectedIndex = 0;
   bool isSwitched;
 
@@ -36,20 +45,10 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
-
   @override
   Widget build(BuildContext context) {
     ThemeColors colors = Provider.of<ThemeColors>(context);
     //Gets executed once and sets the status bar color at the launch of the application
-
-    if (colors.indexNo==0) {
-      SystemChrome.setSystemUIOverlayStyle(
-          SystemUiOverlayStyle(statusBarColor: Color(0xff5748AF)));
-    } else {
-      SystemChrome.setSystemUIOverlayStyle(
-          SystemUiOverlayStyle(statusBarColor: Color(0xff212121)));
-    }
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: colors.getPrimaryColor(),

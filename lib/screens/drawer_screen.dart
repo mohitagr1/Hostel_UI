@@ -24,13 +24,6 @@ class _DrawerScreenState extends State<DrawerScreen> {
 
   _checkMode() async {
     _sharedPreferences = await SharedPreferences.getInstance();
-    ThemeColors colors = Provider.of<ThemeColors>(context, listen: false);
-    setState(() {
-      print("drakMode: ");
-      print(_sharedPreferences.getBool("isDarkMode"));
-      isSwitched = _sharedPreferences.getBool("isDarkMode") ?? false;
-      isSwitched ? colors.setIndexNo(1) : colors.setIndexNo(0);
-    });
   }
 
   @override
