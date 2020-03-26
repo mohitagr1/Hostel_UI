@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hoste_ui/models/themecolors.dart';
+import 'package:provider/provider.dart';
 
 class MealCard extends StatefulWidget {
   final Color color;
@@ -11,9 +13,11 @@ class MealCard extends StatefulWidget {
 }
 
 class _MealCardState extends State<MealCard> {
+  
   bool isSwitched = false;
   @override
   Widget build(BuildContext context) {
+    ThemeColors colors = Provider.of<ThemeColors>(context);
     return Expanded(
       child: Row(
         children: <Widget>[
@@ -32,7 +36,7 @@ class _MealCardState extends State<MealCard> {
                     widget.mealType,
                     style: TextStyle(
                         fontSize: 24.0,
-                        color: Theme.of(context).accentColor,
+                        color: colors.getAccentcolor(),
                         fontWeight: FontWeight.bold,
                         letterSpacing: 1.0),
                   ),
@@ -42,7 +46,7 @@ class _MealCardState extends State<MealCard> {
                   Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(50),
-                      color: Theme.of(context).accentColor,
+                      color: colors.getAccentcolor(),
                     ),
                     child: Padding(
                       padding: EdgeInsets.all(3.0),
@@ -68,6 +72,7 @@ class _MealCardState extends State<MealCard> {
                   ),
                   Switch(
                     value: isSwitched,
+                    activeColor: colors.getAccentcolor(),
                     onChanged: (val) {
                       setState(() {
                         isSwitched = val;

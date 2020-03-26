@@ -8,15 +8,14 @@ import 'package:provider/provider.dart';
 class CalendarScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
     ThemeColors colors = Provider.of<ThemeColors>(context);
-    
+
     return SingleChildScrollView(
       child: Column(
         children: <Widget>[
           CalendarHeader(),
           Container(
-            color: colors.getPrimaryColor(),//Theme.of(context).primaryColor,
+            color: colors.getPrimaryColor(),
             child: Container(
               // height: MediaQuery.of(context).size.height,
               decoration: BoxDecoration(
@@ -30,20 +29,19 @@ class CalendarScreen extends StatelessWidget {
                 children: <Widget>[
                   // MyCalendar(),
                   MyCustomCalendar(),
-                  Divider(),
+                  Divider(color: colors.getTimelineBackColor(),thickness: 2,),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                     child: Container(
                       alignment: Alignment.centerLeft,
-                      child: Text("Timeline",
-                          style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600,
-                              color:
-                                  Theme.of(context).accentColor == Colors.white
-                                      ? Colors.grey[700]
-                                      : Colors.grey[300]) //Colors.grey[700]),
-                          ),
+                      child: Text(
+                        "Timeline",
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.grey[700],
+                        ),
+                      ),
                     ),
                   ),
                   MealTimeLine(),
