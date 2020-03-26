@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
 import 'package:flutter/services.dart';
 import 'package:hoste_ui/models/themecolors.dart';
 import 'package:hoste_ui/screens/calendar_screen.dart';
 import 'package:hoste_ui/screens/drawer_screen.dart';
-=======
-import 'package:hoste_ui/models/themecolors.dart';
-import 'package:hoste_ui/screens/calendar_screen.dart';
->>>>>>> d0be2b0d18b22166c0ce53b27fce03150a93f372
 import 'package:hoste_ui/screens/profile_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -41,26 +36,14 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
-<<<<<<< HEAD
-=======
-  // setThemeIndex(int value) async {
-  //   print("here");
-  //   SharedPreferences preferences = await SharedPreferences.getInstance();
-  //   preferences.setInt('themeValue', value);
-  // }
 
->>>>>>> d0be2b0d18b22166c0ce53b27fce03150a93f372
   @override
   Widget build(BuildContext context) {
     ThemeColors colors = Provider.of<ThemeColors>(context);
-
-<<<<<<< HEAD
     //Gets executed once and sets the status bar color at the launch of the application
     SystemChrome.setSystemUIOverlayStyle(
         SystemUiOverlayStyle(statusBarColor: Color(0xff5748AF)));
 
-=======
->>>>>>> d0be2b0d18b22166c0ce53b27fce03150a93f372
     return Scaffold(
       appBar: AppBar(
         backgroundColor: colors.getPrimaryColor(),
@@ -74,15 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
         elevation: 0.0,
       ),
       drawer: Drawer(
-        child: DrawerHeader(
-          child: Switch(
-              value: isSwitched,
-              onChanged: (val) {
-                print(val);
-                isSwitched = val;
-                val ? colors.setIndexNo(1) : colors.setIndexNo(0);
-              }),
-        ),
+        child: DrawerScreen()
       ),
       body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
