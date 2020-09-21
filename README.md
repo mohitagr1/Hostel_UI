@@ -8,9 +8,9 @@
 [Back-end code in Flutter](https://github.com/mohitagr1/HostelDatabase)
 
 <p float="left">
-   <img src="/src/main/resources/assets/mock.gif" height="500"/>
-   <img src="/src/main/resources/assets/loginPage.jpeg" height="500"/>
-   <img src="/src/main/resources/assets/HomePage.jpeg" height="500"/>
-   <img src="/src/main/resources/assets/ProfilePage.jpeg" height="500"/>
-   <img src="/src/main/resources/assets/HomeDark.jpeg" height="500"/>
+   <img src="/assets/images/mock.gif" height="500"/>
+   <img src="/assets/images/loginPage.jpeg" height="500"/>
+   <img src="/assets/images/HomePage.jpeg" height="500"/>
+   <img src="/assets/images/ProfilePage.jpeg" height="500"/>
+   <img src="/assets/images/HomeDark.jpeg" height="500"/>
 </p>
