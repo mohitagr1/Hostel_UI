@@ -1,16 +1,16 @@
-# hoste_ui
+#### MealTime - (Hostler Mess App) 
 
-A new Flutter project.
+* Flutter app for efficient daily meal management.
+* Build REST APIs with spring boot using MVC architecture.
+* Minimized the workload and management processing time extensively.
+* Technology Used: Spring Boot(Java), MySql,Flutter(Dart)
 
-## Getting Started
+[Back-end code in Flutter](https://github.com/mohitagr1/HostelDatabase)
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<p float="left">
+   <img src="/src/main/resources/assets/mock.gif" height="500"/>
+   <img src="/src/main/resources/assets/loginPage.jpeg" height="500"/>
+   <img src="/src/main/resources/assets/HomePage.jpeg" height="500"/>
+   <img src="/src/main/resources/assets/ProfilePage.jpeg" height="500"/>
+   <img src="/src/main/resources/assets/HomeDark.jpeg" height="500"/>
+</p>
