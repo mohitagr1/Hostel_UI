@@ -5,7 +5,7 @@
 * Minimized the workload and management processing time extensively.
 * Technology Used: Spring Boot(Java), MySql,Flutter(Dart)
 
-[Back-end code in Flutter](https://github.com/mohitagr1/HostelDatabase)
+[Back-end code using Spring Boot](https://github.com/mohitagr1/HostelDatabase)
 
 <p float="left">
    <img src="/assets/images/mock.gif" height="500"/>
